@@ -9,6 +9,7 @@ const CLIENT_SECRET = "2290f350d4274d05b739e1463f6c5f37";
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [accessToken, setAccessToken] = useState("");
+  const [count, setCount] = useState(0);
   const [artist, setArtist] = useState([]);
   const [related, setRelated] = useState([]);
 
@@ -59,21 +60,26 @@ function App() {
       .then((data) => {
         setRelated(data);
       });
-
     //Display those albums to the user
   }
-  const artistImage = artist.images[0].url;
-  const artistName = artist.name;
+
+  // let artistImage = artist?.images;
+  // let artistImage = artist.images[0].url;
+  // let artistName = artist.name;
   console.log(related);
+  console.log(artist);
 
   return (
     <div>
-      <SearchFirstArtist
-        setSearchInput={setSearchInput}
-        onSearch={search}
-        artistImage={artistImage}
-        artistName={artistName}
-      />
+      {artist ? (
+        <SearchFirstArtist
+          setSearchInput={setSearchInput}
+          onSearch={search}
+          artist={artist}
+        />
+      ) : (
+        <SearchFirstArtist />
+      )}
       <RelatedArtists related={related} />
     </div>
   );
