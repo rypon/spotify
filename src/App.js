@@ -33,54 +33,87 @@ function App() {
 
   //Search
 
+  const artistParameters = {
+    method: "GET",
+    headers: {
+      "content-type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  };
   async function search() {
     // GET request using search to get the Artist ID
-    const artistParameters = {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        Authorization: "Bearer " + accessToken,
-      },
-    };
+    // const artistParameters = {
+    //   method: "GET",
+    //   headers: {
+    //     "content-type": "application/json",
+    //     Authorization: "Bearer " + accessToken,
+    //   },
+    // };
     const searchedArtist = await fetch(
       "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
       artistParameters
     )
       .then((response) => response.json())
       .then((data) => {
-        setArtist(data.artists.items[0]);
+        return data.artists.items[0];
+
+        // setArtist(data.artists.items[0]);
       });
 
+    setArtist(searchedArtist);
+
     //GET request with Artist ID grab all related artists from that artist
+    // const relatedArtists = await fetch(
+    //   "https://api.spotify.com/v1/artists/" + artist?.id + "/related-artists",
+    //   artistParameters
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     return data.artists;
+    //     // setRelated(data);
+    //   });
+    // console.log(relatedArtists);
+    // setRelated(relatedArtists);
+    //Display those albums to the user
+  }
+  async function getRelated() {
     const relatedArtists = await fetch(
-      "https://api.spotify.com/v1/artists/" + artist.id + "/related-artists",
+      "https://api.spotify.com/v1/artists/" + artist?.id + "/related-artists",
       artistParameters
     )
       .then((response) => response.json())
       .then((data) => {
-        setRelated(data);
+        return data.artists;
+        // setRelated(data);
       });
-    //Display those albums to the user
+    setRelated(relatedArtists);
   }
 
-  // let artistImage = artist?.images;
-  // let artistImage = artist.images[0].url;
-  // let artistName = artist.name;
-  console.log(related);
-  console.log(artist);
+  useEffect(() => {
+    setArtist(artist);
+    setRelated(related);
+  }, [count]);
 
+  function increment() {
+    setCount(count + 1);
+    getRelated();
+  }
+
+  console.log(artist);
+  console.log(related);
   return (
     <div>
-      {artist ? (
-        <SearchFirstArtist
-          setSearchInput={setSearchInput}
-          onSearch={search}
-          artist={artist}
-        />
-      ) : (
-        <SearchFirstArtist />
-      )}
+      <SearchFirstArtist
+        setSearchInput={setSearchInput}
+        search={search}
+        setCount={setCount}
+        count={count}
+        artist={artist}
+        getRelated={getRelated}
+      />
+
       <RelatedArtists related={related} />
+      <button onClick={() => increment()}> button</button>
     </div>
   );
 }
