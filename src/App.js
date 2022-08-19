@@ -10,6 +10,7 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [accessToken, setAccessToken] = useState("");
   const [count, setCount] = useState(0);
+  const [startArtist, setStartArtist] = useState([]);
   const [artist, setArtist] = useState([]);
   const [related, setRelated] = useState([]);
   const [newRelatedArtist, setNewRelatedArtist] = useState([]);
@@ -51,6 +52,7 @@ function App() {
         return data.artists.items[0];
       });
 
+    setStartArtist(searchedArtist);
     setArtist(searchedArtist);
   }
   async function getRelated() {
@@ -63,12 +65,13 @@ function App() {
         return data.artists;
       });
     setRelated(relatedArtists);
+    setNewRelatedArtist(relatedArtists);
   }
 
   useEffect(() => {
     setArtist(artist);
     setRelated(related);
-  }, [count]);
+  }, [artist]);
 
   function increment() {
     setCount(count + 1);
@@ -82,11 +85,18 @@ function App() {
         search={search}
         setCount={setCount}
         count={count}
-        artist={artist}
+        startArtist={startArtist}
         getRelated={getRelated}
       />
       <button onClick={() => increment()}> button</button>
-      <RelatedArtistsPage related={related} setRelated={setRelated} />
+      <RelatedArtistsPage
+        related={related}
+        setRelated={setRelated}
+        artist={artist}
+        setArtist={setArtist}
+        increment={increment}
+        count={count}
+      />
     </div>
   );
 }

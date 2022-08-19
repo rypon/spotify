@@ -2,7 +2,14 @@ import React from "react";
 import "../App.css";
 import RelatedArtistsCard from "./RelatedArtistsCard";
 
-function RelatedArtistsPage({ related, setRelated }) {
+function RelatedArtistsPage({
+  related,
+  setRelated,
+  artist,
+  setArtist,
+  increment,
+  count,
+}) {
   const relatedObj = related?.map((val) => (
     <RelatedArtistsCard
       key={val.id}
@@ -10,6 +17,10 @@ function RelatedArtistsPage({ related, setRelated }) {
       name={val.name}
       setRelated={setRelated}
       image={val.images?.[0]}
+      artist={artist}
+      setArtist={setArtist}
+      increment={increment}
+      count={count}
     />
   ));
 
