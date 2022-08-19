@@ -1,7 +1,7 @@
 import "./App.css";
 import SearchFirstArtist from "./components/SearchFirstArtist";
 import React, { useState, useEffect } from "react";
-import RelatedArtists from "./components/RelatedArtists";
+import RelatedArtistsPage from "./components/RelatedArtistsPage";
 
 const CLIENT_ID = "870853fc8bf84c4cadb2b73729986e0c";
 const CLIENT_SECRET = "2290f350d4274d05b739e1463f6c5f37";
@@ -99,8 +99,6 @@ function App() {
     getRelated();
   }
 
-  console.log(artist);
-  console.log(related);
   return (
     <div>
       <SearchFirstArtist
@@ -111,9 +109,8 @@ function App() {
         artist={artist}
         getRelated={getRelated}
       />
-
-      <RelatedArtists related={related} />
       <button onClick={() => increment()}> button</button>
+      <RelatedArtistsPage related={related} />
     </div>
   );
 }
