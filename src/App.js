@@ -12,6 +12,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [artist, setArtist] = useState([]);
   const [related, setRelated] = useState([]);
+  const [newRelatedArtist, setNewRelatedArtist] = useState([]);
 
   useEffect(() => {
     //API access token
@@ -41,14 +42,6 @@ function App() {
     },
   };
   async function search() {
-    // GET request using search to get the Artist ID
-    // const artistParameters = {
-    //   method: "GET",
-    //   headers: {
-    //     "content-type": "application/json",
-    //     Authorization: "Bearer " + accessToken,
-    //   },
-    // };
     const searchedArtist = await fetch(
       "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
       artistParameters
@@ -56,25 +49,9 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         return data.artists.items[0];
-
-        // setArtist(data.artists.items[0]);
       });
 
     setArtist(searchedArtist);
-
-    //GET request with Artist ID grab all related artists from that artist
-    // const relatedArtists = await fetch(
-    //   "https://api.spotify.com/v1/artists/" + artist?.id + "/related-artists",
-    //   artistParameters
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     return data.artists;
-    //     // setRelated(data);
-    //   });
-    // console.log(relatedArtists);
-    // setRelated(relatedArtists);
-    //Display those albums to the user
   }
   async function getRelated() {
     const relatedArtists = await fetch(
@@ -84,7 +61,6 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         return data.artists;
-        // setRelated(data);
       });
     setRelated(relatedArtists);
   }
@@ -110,7 +86,7 @@ function App() {
         getRelated={getRelated}
       />
       <button onClick={() => increment()}> button</button>
-      <RelatedArtistsPage related={related} />
+      <RelatedArtistsPage related={related} setRelated={setRelated} />
     </div>
   );
 }
