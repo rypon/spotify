@@ -1,17 +1,18 @@
 import "./App.css";
-import SearchFirstArtist from "./components/SearchFirstArtist";
 import React, { useState, useEffect } from "react";
 import RelatedArtistsPage from "./components/RelatedArtistsPage";
+import Header from "./components/Header";
 
 const CLIENT_ID = "870853fc8bf84c4cadb2b73729986e0c";
 const CLIENT_SECRET = "2290f350d4274d05b739e1463f6c5f37";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
+  const [secondSearchInput, setSecondSearchInput] = useState("");
   const [accessToken, setAccessToken] = useState("");
   const [count, setCount] = useState(0);
   const [startArtist, setStartArtist] = useState([]);
-  const [endArtist, setEndArtist] = useState([]);
+  const [secondArtist, setSecondArtist] = useState([]);
   const [artist, setArtist] = useState([]);
   const [related, setRelated] = useState([]);
 
@@ -54,7 +55,22 @@ function App() {
         setCount(count + 1);
       });
   }
-  console.log(artist);
+
+  async function secondSearch() {
+    const secondSearchedArtist = await fetch(
+      "https://api.spotify.com/v1/search?q=" +
+        secondSearchInput +
+        "&type=artist",
+      searchParameters
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        // return data.artists.items[0];
+        console.log(data.artists.items[0]);
+        setSecondArtist(data.artists.items[0]);
+      });
+  }
+
   async function getRelated() {
     const relatedArtists = await fetch(
       "https://api.spotify.com/v1/artists/" + artist?.id + "/related-artists",
@@ -79,12 +95,15 @@ function App() {
 
   return (
     <div>
-      <SearchFirstArtist
+      <Header
         setSearchInput={setSearchInput}
+        setSecondSearchInput={setSecondSearchInput}
         search={search}
+        secondSearch={secondSearch}
         setCount={setCount}
         count={count}
         startArtist={startArtist}
+        secondArtist={secondArtist}
         getRelated={getRelated}
       />
       {/* <button onClick={() => increment()}> button</button> */}
