@@ -3,27 +3,11 @@ import "../App.css";
 import { Card } from "antd";
 const { Meta } = Card;
 
-function RelatedArtistsCard({
-  val,
-  name,
-  image,
-  artist,
-  setArtist,
-  increment,
-  count,
-}) {
-  const [newCount, setNewCount] = useState(0);
-  // useEffect(() => {
-  //   // setArtist(val);
-  //   console.log(artist.name);
-  // }, [clicked]);
-
+function RelatedArtistsCard({ val, name, image, setArtist, increment }) {
   function clicked() {
-    console.log(val);
     setArtist(val);
     increment();
   }
-  console.log(artist.name);
 
   return (
     <div class="flex justify-center w-48">
@@ -35,6 +19,11 @@ function RelatedArtistsCard({
         cover={<img alt="example" src={image.url} />}
       >
         <Meta title={name} />
+        <p>
+          {val?.name === undefined
+            ? "Search Valid Artist"
+            : val?.genres.join(", ")}
+        </p>
       </Card>
     </div>
   );

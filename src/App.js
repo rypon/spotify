@@ -11,9 +11,9 @@ function App() {
   const [accessToken, setAccessToken] = useState("");
   const [count, setCount] = useState(0);
   const [startArtist, setStartArtist] = useState([]);
+  const [endArtist, setEndArtist] = useState([]);
   const [artist, setArtist] = useState([]);
   const [related, setRelated] = useState([]);
-  const [newRelatedArtist, setNewRelatedArtist] = useState([]);
 
   useEffect(() => {
     //API access token
@@ -33,49 +33,48 @@ function App() {
       .then((data) => setAccessToken(data.access_token));
   }, []);
 
-  //Search
-
-  const artistParameters = {
+  const searchParameters = {
     method: "GET",
     headers: {
       "content-type": "application/json",
       Authorization: "Bearer " + accessToken,
     },
   };
+
   async function search() {
     const searchedArtist = await fetch(
       "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
-      artistParameters
+      searchParameters
     )
       .then((response) => response.json())
       .then((data) => {
-        return data.artists.items[0];
+        // return data.artists.items[0];
+        setArtist(data.artists.items[0]);
+        setStartArtist(data.artists.items[0]);
+        setCount(count + 1);
       });
-
-    setStartArtist(searchedArtist);
-    setArtist(searchedArtist);
   }
+  console.log(artist);
   async function getRelated() {
     const relatedArtists = await fetch(
       "https://api.spotify.com/v1/artists/" + artist?.id + "/related-artists",
-      artistParameters
+      searchParameters
     )
       .then((response) => response.json())
       .then((data) => {
-        return data.artists;
+        // return data.artists;
+        setRelated(data.artists);
       });
-    setRelated(relatedArtists);
-    setNewRelatedArtist(relatedArtists);
   }
 
   useEffect(() => {
     setArtist(artist);
+    getRelated();
     setRelated(related);
-  }, [artist]);
+  }, [count]);
 
   function increment() {
     setCount(count + 1);
-    getRelated();
   }
 
   return (
@@ -88,7 +87,7 @@ function App() {
         startArtist={startArtist}
         getRelated={getRelated}
       />
-      <button onClick={() => increment()}> button</button>
+      {/* <button onClick={() => increment()}> button</button> */}
       <RelatedArtistsPage
         related={related}
         setRelated={setRelated}

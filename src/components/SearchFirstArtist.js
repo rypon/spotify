@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../App.css";
 import { Input, Space, Card } from "antd";
 const { Search } = Input;
@@ -46,6 +46,11 @@ function SearchFirstArtist({ setSearchInput, search, startArtist }) {
                 : startArtist?.name
             }
           />
+          <p>
+            {startArtist?.name === undefined
+              ? "Search Valid Artist"
+              : startArtist?.genres.join(", ")}
+          </p>
         </Card>
       </div>
     </div>
