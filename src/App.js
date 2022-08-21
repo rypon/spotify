@@ -65,8 +65,6 @@ function App() {
     )
       .then((response) => response.json())
       .then((data) => {
-        // return data.artists.items[0];
-        console.log(data.artists.items[0]);
         setSecondArtist(data.artists.items[0]);
       });
   }
@@ -93,6 +91,17 @@ function App() {
     setCount(count + 1);
   }
 
+  console.log("Starting artist ID: ", startArtist.id);
+  console.log("Ending artist ID: ", secondArtist.id);
+  console.log("Current artist ID: ", artist.id);
+
+  if (
+    artist.id === secondArtist.id &&
+    artist.id !== undefined &&
+    secondArtist.id !== undefined
+  ) {
+    console.log("Winner!");
+  }
   return (
     <div>
       <Header
