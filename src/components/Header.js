@@ -14,23 +14,27 @@ function Header({
   getRelated,
 }) {
   return (
-    <div>
-      <SearchFirstArtist
-        setSearchInput={setSearchInput}
-        search={search}
-        setCount={setCount}
-        count={count}
-        startArtist={startArtist}
-        getRelated={getRelated}
-        setSecondSearchInput={setSecondSearchInput}
-        secondArtist={secondArtist}
-        secondSearch={secondSearch}
-      />
-      {/* <SearchSecondArtist
-        setSecondSearchInput={setSecondSearchInput}
-        secondArtist={secondArtist}
-        secondSearch={secondSearch}
-      /> */}
+    <div class="grid sm:grid-cols-2 justify-center">
+      <div class="justify-self-center">
+        <SearchFirstArtist
+          setSearchInput={setSearchInput}
+          search={search}
+          setCount={setCount}
+          count={count}
+          startArtist={startArtist}
+          getRelated={getRelated}
+          // setSecondSearchInput={setSecondSearchInput}
+          // secondArtist={secondArtist}
+          // secondSearch={secondSearch}
+        />
+      </div>
+      <div class="justify-self-center">
+        <SearchSecondArtist
+          setSecondSearchInput={setSecondSearchInput}
+          secondArtist={secondArtist}
+          secondSearch={secondSearch}
+        />
+      </div>
     </div>
   );
 }
