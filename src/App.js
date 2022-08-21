@@ -114,6 +114,7 @@ function App() {
         startArtist={startArtist}
         secondArtist={secondArtist}
         getRelated={getRelated}
+        artist={artist}
       />
       {/* <button onClick={() => increment()}> button</button> */}
       <RelatedArtistsPage
