@@ -93,7 +93,8 @@ function App() {
 
   console.log("Starting artist ID: ", startArtist.id);
   console.log("Ending artist ID: ", secondArtist.id);
-  console.log("Current artist ID: ", artist.id);
+  console.log("Current artist ID: ", artist.id, artist.name);
+  console.log(related);
 
   if (
     artist.id === secondArtist.id &&
