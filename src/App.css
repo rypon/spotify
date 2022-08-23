@@ -3,9 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.App {
-  text-align: center;
-}
+body {
+  background-color: black;
+  }
+
+  .card-p-title{
+    color: #fff;
+    font-size: 24px;
+  }
+
 
 .App-logo {
   height: 40vmin;

@@ -10,7 +10,7 @@ function SearchFirstArtist({ setSearchInput, search, startArtist }) {
 
   return (
     <div class="w-fit" id="1">
-      <div class="w-fit">
+      <div class="w-fit mx-auto">
         <Space direction="vertical">
           <Search
             className="place-self-center"
@@ -18,6 +18,7 @@ function SearchFirstArtist({ setSearchInput, search, startArtist }) {
             onSearch={() => search()}
             style={{
               width: 200,
+              margin: "5px",
             }}
             onChange={(event) => setSearchInput(event.target.value)}
           />
@@ -29,6 +30,8 @@ function SearchFirstArtist({ setSearchInput, search, startArtist }) {
           style={{
             width: 300,
           }}
+          bordered={false}
+          bodyStyle={{ backgroundColor: "#191414", color: "#C7C7C7" }}
           cover={
             <img
               alt="example"
@@ -40,13 +43,12 @@ function SearchFirstArtist({ setSearchInput, search, startArtist }) {
             />
           }
         >
-          <Meta
-            title={
-              startArtist?.name === undefined
-                ? "Search Valid Artist"
-                : startArtist?.name
-            }
-          />
+          <p className="card-p-title">
+            {startArtist?.name === undefined
+              ? "Search Valid Artist"
+              : startArtist?.name}
+          </p>
+
           <p>
             {startArtist?.name === undefined
               ? "Search Valid Artist"

@@ -18,13 +18,19 @@ function RelatedArtistsCard({ val, name, image, setArtist, increment }) {
       <Card
         style={{
           width: 200,
+          backgroundColor: "#191414",
+        }}
+        bordered={false}
+        bodyStyle={{
+          color: "#C7C7C7",
         }}
         onClick={() => clicked()}
         cover={
           <img alt="example" src={image?.url ? image?.url : invalidImage} />
         }
       >
-        <Meta title={name} />
+        <p className="card-p-title w-fit">{name}</p>
+
         <p>
           {val?.name === undefined
             ? "Search Valid Artist"

@@ -91,11 +91,6 @@ function App() {
     setCount(count + 1);
   }
 
-  console.log("Starting artist ID: ", startArtist.id);
-  console.log("Ending artist ID: ", secondArtist.id);
-  console.log("Current artist ID: ", artist.id, artist.name);
-  console.log(related);
-
   if (
     artist.id === secondArtist.id &&
     artist.id !== undefined &&
@@ -104,7 +99,7 @@ function App() {
     console.log("Winner!");
   }
   return (
-    <div>
+    <div className="app">
       <Header
         setSearchInput={setSearchInput}
         setSecondSearchInput={setSecondSearchInput}

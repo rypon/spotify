@@ -14,7 +14,7 @@ function SearchSecondArtist({
 
   return (
     <div class="w-fit" id="2">
-      <div class="w-fit">
+      <div class="w-fit mx-auto">
         <Space direction="vertical">
           <Search
             className="place-self-center"
@@ -22,6 +22,7 @@ function SearchSecondArtist({
             onSearch={() => secondSearch()}
             style={{
               width: 200,
+              margin: "5px",
             }}
             onChange={(event) => setSecondSearchInput(event.target.value)}
           />
@@ -32,6 +33,7 @@ function SearchSecondArtist({
           style={{
             width: 300,
           }}
+          bodyStyle={{ backgroundColor: "#191414", color: "#C7C7C7" }}
           cover={
             <img
               alt="example"
@@ -42,14 +44,13 @@ function SearchSecondArtist({
               }
             />
           }
+          bordered={false}
         >
-          <Meta
-            title={
-              secondArtist?.name === undefined
-                ? "Search Valid Artist"
-                : secondArtist?.name
-            }
-          />
+          <p className="card-p-title">
+            {secondArtist?.name === undefined
+              ? "Search Valid Artist"
+              : secondArtist?.name}
+          </p>
           <p>
             {secondArtist?.name === undefined
               ? "Search Valid Artist"
