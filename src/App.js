@@ -16,6 +16,7 @@ function App() {
   const [secondArtist, setSecondArtist] = useState([]);
   const [artist, setArtist] = useState([]);
   const [related, setRelated] = useState([]);
+  const [showLander, setShowLander] = useState(true);
 
   useEffect(() => {
     //API access token
@@ -103,19 +104,24 @@ function App() {
 
   return (
     <div className="app">
-      <LanderPage />
-      <Header
-        setSearchInput={setSearchInput}
-        setSecondSearchInput={setSecondSearchInput}
-        search={search}
-        secondSearch={secondSearch}
-        setCount={setCount}
-        count={count}
-        startArtist={startArtist}
-        secondArtist={secondArtist}
-        getRelated={getRelated}
-        artist={artist}
-      />
+      {showLander ? (
+        <LanderPage showLander={showLander} setShowLander={setShowLander} />
+      ) : (
+        <Header
+          setSearchInput={setSearchInput}
+          setSecondSearchInput={setSecondSearchInput}
+          search={search}
+          secondSearch={secondSearch}
+          setCount={setCount}
+          count={count}
+          startArtist={startArtist}
+          secondArtist={secondArtist}
+          getRelated={getRelated}
+          artist={artist}
+          showLander={showLander}
+          setShowLander={setShowLander}
+        />
+      )}
 
       <RelatedArtistsPage
         related={related}

@@ -14,28 +14,40 @@ function Header({
   secondArtist,
   getRelated,
   artist,
+  setShowLander,
+  showLander,
 }) {
+  function LanderStatus() {
+    setShowLander(!showLander);
+  }
   return (
-    <div class="grid sm:grid-cols-3 justify-center">
-      <div class="justify-self-center">
-        <SearchFirstArtist
-          setSearchInput={setSearchInput}
-          search={search}
-          setCount={setCount}
-          count={count}
-          startArtist={startArtist}
-          getRelated={getRelated}
-        />
+    <div>
+      <div className="flex items-center justify-center">
+        <button className="button" onClick={() => LanderStatus()}>
+          START OVER
+        </button>
       </div>
-      <div class="justify-self-center self-center">
-        <CurrentArtist artist={artist} secondArtist={secondArtist} />
-      </div>
-      <div class="justify-self-center">
-        <SearchSecondArtist
-          setSecondSearchInput={setSecondSearchInput}
-          secondArtist={secondArtist}
-          secondSearch={secondSearch}
-        />
+      <div class="grid sm:grid-cols-3 justify-center">
+        <div class="justify-self-center">
+          <SearchFirstArtist
+            setSearchInput={setSearchInput}
+            search={search}
+            setCount={setCount}
+            count={count}
+            startArtist={startArtist}
+            getRelated={getRelated}
+          />
+        </div>
+        <div class="justify-self-center self-center">
+          <CurrentArtist artist={artist} secondArtist={secondArtist} />
+        </div>
+        <div class="justify-self-center">
+          <SearchSecondArtist
+            setSecondSearchInput={setSecondSearchInput}
+            secondArtist={secondArtist}
+            secondSearch={secondSearch}
+          />
+        </div>
       </div>
     </div>
   );

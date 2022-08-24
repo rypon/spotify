@@ -1,6 +1,12 @@
 import React from "react";
+import "../App.css";
 
-function LanderPage() {
+function LanderPage({ setShowLander, showLander }) {
+  function LanderStatus() {
+    setShowLander(!showLander);
+  }
+  console.log(showLander);
+
   return (
     <div className="flex items-center justify-center h-screen ">
       <div className="grid justify-items-center">
@@ -9,6 +15,9 @@ function LanderPage() {
           Find your way from one artist to another through Spotify's recommended
           artist algorithm!
         </div>
+        <button className="button" onClick={() => LanderStatus()}>
+          Start
+        </button>
       </div>
     </div>
   );

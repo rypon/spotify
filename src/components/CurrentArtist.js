@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "antd";
+import "../App.css";
 
 function CurrentArtist({ artist, secondArtist }) {
   const invalidImage =
