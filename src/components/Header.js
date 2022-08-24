@@ -16,15 +16,13 @@ function Header({
   artist,
   setShowLander,
   showLander,
+  LanderStatus,
 }) {
-  function LanderStatus() {
-    setShowLander(!showLander);
-  }
   return (
     <div>
       <div className="flex items-center justify-center">
         <button className="button" onClick={() => LanderStatus()}>
-          START OVER
+          Home
         </button>
       </div>
       <div class="grid sm:grid-cols-3 justify-center">

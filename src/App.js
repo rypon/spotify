@@ -94,6 +94,13 @@ function App() {
     setCount(count + 1);
   }
 
+  function LanderStatus() {
+    setShowLander(!showLander);
+    setArtist([]);
+    setStartArtist([]);
+    setRelated([]);
+  }
+
   if (
     artist.id === secondArtist.id &&
     artist.id !== undefined &&
@@ -105,7 +112,11 @@ function App() {
   return (
     <div className="app">
       {showLander ? (
-        <LanderPage showLander={showLander} setShowLander={setShowLander} />
+        <LanderPage
+          showLander={showLander}
+          setShowLander={setShowLander}
+          LanderStatus={LanderStatus}
+        />
       ) : (
         <Header
           setSearchInput={setSearchInput}
@@ -120,6 +131,7 @@ function App() {
           artist={artist}
           showLander={showLander}
           setShowLander={setShowLander}
+          LanderStatus={LanderStatus}
         />
       )}
 

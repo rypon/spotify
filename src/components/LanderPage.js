@@ -1,12 +1,7 @@
 import React from "react";
 import "../App.css";
 
-function LanderPage({ setShowLander, showLander }) {
-  function LanderStatus() {
-    setShowLander(!showLander);
-  }
-  console.log(showLander);
-
+function LanderPage({ setShowLander, showLander, LanderStatus }) {
   return (
     <div className="flex items-center justify-center h-screen ">
       <div className="grid justify-items-center">
