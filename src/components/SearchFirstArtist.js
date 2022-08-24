@@ -2,7 +2,6 @@ import React from "react";
 import "../App.css";
 import { Input, Space, Card } from "antd";
 const { Search } = Input;
-const { Meta } = Card;
 
 function SearchFirstArtist({ setSearchInput, search, startArtist }) {
   const invalidImage =
@@ -57,52 +56,6 @@ function SearchFirstArtist({ setSearchInput, search, startArtist }) {
         </Card>
       </div>
     </div>
-    /* <div class="w-fit" id="2">
-          <div class="w-fit">
-            <Space direction="vertical">
-              <Search
-                className="place-self-center"
-                placeholder="Search seconding Artist"
-                onSearch={() => secondSearch()}
-                style={{
-                  width: 200,
-                }}
-                onChange={(event) => setSecondSearchInput(event.target.value)}
-              />
-            </Space>
-          </div>
-          <div class="w-fit">
-            <Card
-              style={{
-                width: 300,
-              }}
-              cover={
-                <img
-                  alt="example"
-                  src={
-                    secondArtist?.name === undefined
-                      ? invalidImage
-                      : secondArtist?.images[0].url
-                  }
-                />
-              }
-            >
-              <Meta
-                title={
-                  secondArtist?.name === undefined
-                    ? "Search Valid Artist"
-                    : secondArtist?.name
-                }
-              />
-              <p>
-                {secondArtist?.name === undefined
-                  ? "Search Valid Artist"
-                  : secondArtist?.genres.join(", ")}
-              </p>
-            </Card>
-          </div>
-        </div> */
-    // </div>
   );
 }
 

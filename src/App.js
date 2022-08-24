@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import RelatedArtistsPage from "./components/RelatedArtistsPage";
 import Header from "./components/Header";
+import LanderPage from "./components/LanderPage";
 
 const CLIENT_ID = "870853fc8bf84c4cadb2b73729986e0c";
 const CLIENT_SECRET = "2290f350d4274d05b739e1463f6c5f37";
@@ -53,6 +54,7 @@ function App() {
         setArtist(data.artists.items[0]);
         setStartArtist(data.artists.items[0]);
         setCount(count + 1);
+        console.log(data.artists.items);
       });
   }
 
@@ -98,8 +100,10 @@ function App() {
   ) {
     console.log("Winner!");
   }
+
   return (
     <div className="app">
+      <LanderPage />
       <Header
         setSearchInput={setSearchInput}
         setSecondSearchInput={setSecondSearchInput}
@@ -112,7 +116,7 @@ function App() {
         getRelated={getRelated}
         artist={artist}
       />
-      {/* <button onClick={() => increment()}> button</button> */}
+
       <RelatedArtistsPage
         related={related}
         setRelated={setRelated}
