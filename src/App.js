@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import RelatedArtistsPage from "./components/RelatedArtistsPage";
 import Header from "./components/Header";
 import LanderPage from "./components/LanderPage";
+import FirstArtistSelectionPage from "./components/FirstArtistSelectionPage";
 
 const CLIENT_ID = "870853fc8bf84c4cadb2b73729986e0c";
 const CLIENT_SECRET = "2290f350d4274d05b739e1463f6c5f37";
@@ -13,6 +14,7 @@ function App() {
   const [accessToken, setAccessToken] = useState("");
   const [count, setCount] = useState(0);
   const [startArtist, setStartArtist] = useState([]);
+  const [startArtistSelect, setStartArtistSelect] = useState([]);
   const [secondArtist, setSecondArtist] = useState([]);
   const [artist, setArtist] = useState([]);
   const [related, setRelated] = useState([]);
@@ -55,6 +57,7 @@ function App() {
         setArtist(data.artists.items[0]);
         setStartArtist(data.artists.items[0]);
         setCount(count + 1);
+        setStartArtistSelect(data.artists.items);
         console.log(data.artists.items);
       });
   }
@@ -99,6 +102,8 @@ function App() {
     setArtist([]);
     setStartArtist([]);
     setRelated([]);
+    setSecondArtist([]);
+    setStartArtistSelect([]);
   }
 
   if (
@@ -118,31 +123,40 @@ function App() {
           LanderStatus={LanderStatus}
         />
       ) : (
-        <Header
-          setSearchInput={setSearchInput}
-          setSecondSearchInput={setSecondSearchInput}
-          search={search}
-          secondSearch={secondSearch}
-          setCount={setCount}
-          count={count}
-          startArtist={startArtist}
-          secondArtist={secondArtist}
-          getRelated={getRelated}
-          artist={artist}
-          showLander={showLander}
-          setShowLander={setShowLander}
-          LanderStatus={LanderStatus}
-        />
+        <div>
+          <Header
+            setSearchInput={setSearchInput}
+            setSecondSearchInput={setSecondSearchInput}
+            search={search}
+            secondSearch={secondSearch}
+            setCount={setCount}
+            count={count}
+            startArtist={startArtist}
+            secondArtist={secondArtist}
+            getRelated={getRelated}
+            artist={artist}
+            showLander={showLander}
+            setShowLander={setShowLander}
+            LanderStatus={LanderStatus}
+          />
+          <FirstArtistSelectionPage
+            startArtistSelect={startArtistSelect}
+            setStartArtistSelect={setStartArtistSelect}
+            startArtist={startArtist}
+            setArtist={setArtist}
+            setStartArtist={setStartArtist}
+            increment={increment}
+          />
+          <RelatedArtistsPage
+            related={related}
+            setRelated={setRelated}
+            artist={artist}
+            setArtist={setArtist}
+            increment={increment}
+            count={count}
+          />
+        </div>
       )}
-
-      <RelatedArtistsPage
-        related={related}
-        setRelated={setRelated}
-        artist={artist}
-        setArtist={setArtist}
-        increment={increment}
-        count={count}
-      />
     </div>
   );
 }
