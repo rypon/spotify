@@ -173,6 +173,7 @@ function App() {
               />
               <SecondArtistSelectionPage
                 secondArtistSelect={secondArtistSelect}
+                setSecondArtist={setSecondArtist}
                 setSecondArtistSelect={setSecondArtistSelect}
                 secondArtist={secondArtist}
                 increment={increment}
@@ -180,49 +181,38 @@ function App() {
             </div>
           }
         />
-      </Routes>
-
-      {/* {showLander ? (
-        <LanderPage
-          showLander={showLander}
-          setShowLander={setShowLander}
-          LanderStatus={LanderStatus}
+        <Route
+          exact
+          path="/play"
+          element={
+            <div>
+              <Header
+                setSearchInput={setSearchInput}
+                setSecondSearchInput={setSecondSearchInput}
+                search={search}
+                secondSearch={secondSearch}
+                setCount={setCount}
+                count={count}
+                startArtist={startArtist}
+                secondArtist={secondArtist}
+                getRelated={getRelated}
+                artist={artist}
+                showLander={showLander}
+                setShowLander={setShowLander}
+                LanderStatus={LanderStatus}
+              />
+              <RelatedArtistsPage
+                related={related}
+                setRelated={setRelated}
+                artist={artist}
+                setArtist={setArtist}
+                increment={increment}
+                count={count}
+              />
+            </div>
+          }
         />
-      ) : (
-        <div>
-          <Header
-            setSearchInput={setSearchInput}
-            setSecondSearchInput={setSecondSearchInput}
-            search={search}
-            secondSearch={secondSearch}
-            setCount={setCount}
-            count={count}
-            startArtist={startArtist}
-            secondArtist={secondArtist}
-            getRelated={getRelated}
-            artist={artist}
-            showLander={showLander}
-            setShowLander={setShowLander}
-            LanderStatus={LanderStatus}
-          />
-          <FirstArtistSelectionPage
-            startArtistSelect={startArtistSelect}
-            setStartArtistSelect={setStartArtistSelect}
-            startArtist={startArtist}
-            setArtist={setArtist}
-            setStartArtist={setStartArtist}
-            increment={increment}
-          />
-          <RelatedArtistsPage
-            related={related}
-            setRelated={setRelated}
-            artist={artist}
-            setArtist={setArtist}
-            increment={increment}
-            count={count}
-          />
-        </div>
-      )} */}
+      </Routes>
     </div>
   );
 }

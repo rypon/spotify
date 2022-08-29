@@ -4,7 +4,7 @@ import SecondArtistSelectionCard from "./SecondArtistSelectionCard";
 
 function SecondArtistSelectionPage({
   secondArtistSelect,
-  setSecondArtistSelect,
+  setSecondArtist,
   secondArtist,
   increment,
 }) {
@@ -15,13 +15,11 @@ function SecondArtistSelectionPage({
       name={val.name}
       image={val.images?.[0]}
       secondArtist={secondArtist}
-      setSecondArtistSelect={setSecondArtistSelect}
+      setSecondArtist={setSecondArtist}
       increment={increment}
       // count={count}
     />
   ));
-
-  console.log(searchList);
 
   return (
     <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">

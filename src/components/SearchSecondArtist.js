@@ -69,8 +69,8 @@ function SearchSecondArtist({
               Home
             </button>
           </Link>
-          <Link to="/second-search" style={{ display: "contents" }}>
-            <button className="button">Next</button>
+          <Link to="/play" style={{ display: "contents" }}>
+            <button className="button">Begin</button>
           </Link>
         </div>
       </div>

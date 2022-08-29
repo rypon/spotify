@@ -12,6 +12,7 @@ function SecondArtistSelectionCard({
   function clicked() {
     setSecondArtist(val);
     increment();
+    console.log(val);
   }
 
   const invalidImage =
