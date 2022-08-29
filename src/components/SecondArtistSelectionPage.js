@@ -1,27 +1,27 @@
 import React from "react";
 import "../App.css";
-import FirstArtistSelectionCard from "./FirstArtistSelectionCard";
+import SecondArtistSelectionCard from "./SecondArtistSelectionCard";
 
-function FirstArtistSelectionPage({
-  startArtistSelect,
-  startArtist,
-  setStartArtist,
+function SecondArtistSelectionPage({
+  secondArtistSelect,
+  setSecondArtistSelect,
+  secondArtist,
   increment,
-  setArtist,
 }) {
-  const searchList = startArtistSelect?.map((val) => (
-    <FirstArtistSelectionCard
+  const searchList = secondArtistSelect?.map((val) => (
+    <SecondArtistSelectionCard
       key={val.id}
       val={val}
       name={val.name}
-      setArtist={setArtist}
       image={val.images?.[0]}
-      startArtist={startArtist}
-      setStartArtist={setStartArtist}
+      secondArtist={secondArtist}
+      setSecondArtistSelect={setSecondArtistSelect}
       increment={increment}
       // count={count}
     />
   ));
+
+  console.log(searchList);
 
   return (
     <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
@@ -34,4 +34,4 @@ function FirstArtistSelectionPage({
   );
 }
 
-export default FirstArtistSelectionPage;
+export default SecondArtistSelectionPage;

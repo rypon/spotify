@@ -2,8 +2,11 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import RelatedArtistsPage from "./components/RelatedArtistsPage";
 import Header from "./components/Header";
+import SearchFirstArtist from "./components/SearchFirstArtist";
+import SearchSecondArtist from "./components/SearchSecondArtist";
 import LanderPage from "./components/LanderPage";
 import FirstArtistSelectionPage from "./components/FirstArtistSelectionPage";
+import SecondArtistSelectionPage from "./components/SecondArtistSelectionPage";
 import { Routes, Route } from "react-router-dom";
 
 const CLIENT_ID = "870853fc8bf84c4cadb2b73729986e0c";
@@ -16,6 +19,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [startArtist, setStartArtist] = useState([]);
   const [startArtistSelect, setStartArtistSelect] = useState([]);
+  const [secondArtistSelect, setSecondArtistSelect] = useState([]);
   const [secondArtist, setSecondArtist] = useState([]);
   const [artist, setArtist] = useState([]);
   const [related, setRelated] = useState([]);
@@ -49,7 +53,7 @@ function App() {
 
   async function search() {
     const searchedArtist = await fetch(
-      "https://api.spotify.com/v1/search?q=" + searchInput + "&type=artist",
+      "https://api.spotify.com/v1/search?q='" + searchInput + "'&type=artist",
       searchParameters
     )
       .then((response) => response.json())
@@ -59,7 +63,6 @@ function App() {
         setStartArtist(data.artists.items[0]);
         setCount(count + 1);
         setStartArtistSelect(data.artists.items);
-        console.log(data.artists.items);
       });
   }
 
@@ -73,6 +76,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setSecondArtist(data.artists.items[0]);
+        setSecondArtistSelect(data.artists.items);
       });
   }
 
@@ -105,6 +109,7 @@ function App() {
     setRelated([]);
     setSecondArtist([]);
     setStartArtistSelect([]);
+    setSecondArtistSelect([]);
   }
 
   if (
@@ -132,22 +137,16 @@ function App() {
         />
         <Route
           exact
-          path="/search"
+          path="/first-search"
           element={
-            <div>
-              <Header
+            <div className="grid justify-items-center">
+              <SearchFirstArtist
                 setSearchInput={setSearchInput}
-                setSecondSearchInput={setSecondSearchInput}
                 search={search}
-                secondSearch={secondSearch}
                 setCount={setCount}
                 count={count}
                 startArtist={startArtist}
-                secondArtist={secondArtist}
                 getRelated={getRelated}
-                artist={artist}
-                showLander={showLander}
-                setShowLander={setShowLander}
                 LanderStatus={LanderStatus}
               />
               <FirstArtistSelectionPage
@@ -158,14 +157,26 @@ function App() {
                 setStartArtist={setStartArtist}
                 increment={increment}
               />
-              {/* <RelatedArtistsPage
-            related={related}
-            setRelated={setRelated}
-            artist={artist}
-            setArtist={setArtist}
-            increment={increment}
-            count={count}
-          /> */}
+            </div>
+          }
+        />
+        <Route
+          exact
+          path="/second-search"
+          element={
+            <div className="grid justify-items-center">
+              <SearchSecondArtist
+                setSecondSearchInput={setSecondSearchInput}
+                secondArtist={secondArtist}
+                secondSearch={secondSearch}
+                LanderStatus={LanderStatus}
+              />
+              <SecondArtistSelectionPage
+                secondArtistSelect={secondArtistSelect}
+                setSecondArtistSelect={setSecondArtistSelect}
+                secondArtist={secondArtist}
+                increment={increment}
+              />
             </div>
           }
         />

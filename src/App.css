@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.title{
+  font-size: 64px;
+}
 
 body {
   background-color: black;

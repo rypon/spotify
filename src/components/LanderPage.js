@@ -11,7 +11,7 @@ function LanderPage({ setShowLander, showLander, LanderStatus }) {
           Find your way from one artist to another through Spotify's recommended
           artist algorithm!
         </div>
-        <Link to="/search">
+        <Link to="/first-search" style={{ display: "contents" }}>
           <button className="button" onClick={() => LanderStatus()}>
             Start
           </button>
