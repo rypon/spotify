@@ -2,6 +2,7 @@ import React from "react";
 import CurrentArtist from "./CurrentArtist";
 import SearchFirstArtist from "./SearchFirstArtist";
 import SearchSecondArtist from "./SearchSecondArtist";
+import { Link } from "react-router-dom";
 
 function Header({
   setSearchInput,
@@ -21,9 +22,11 @@ function Header({
   return (
     <div>
       <div className="flex items-center justify-center">
-        <button className="button" onClick={() => LanderStatus()}>
-          Home
-        </button>
+        <Link to="/">
+          <button className="button" onClick={() => LanderStatus()}>
+            Home
+          </button>
+        </Link>
       </div>
       <div class="grid sm:grid-cols-3 justify-center">
         <div class="justify-self-center">

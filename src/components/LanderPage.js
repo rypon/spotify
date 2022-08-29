@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 
 function LanderPage({ setShowLander, showLander, LanderStatus }) {
   return (
@@ -10,9 +11,11 @@ function LanderPage({ setShowLander, showLander, LanderStatus }) {
           Find your way from one artist to another through Spotify's recommended
           artist algorithm!
         </div>
-        <button className="button" onClick={() => LanderStatus()}>
-          Start
-        </button>
+        <Link to="/search">
+          <button className="button" onClick={() => LanderStatus()}>
+            Start
+          </button>
+        </Link>
       </div>
     </div>
   );

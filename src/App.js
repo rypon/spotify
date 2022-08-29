@@ -4,6 +4,7 @@ import RelatedArtistsPage from "./components/RelatedArtistsPage";
 import Header from "./components/Header";
 import LanderPage from "./components/LanderPage";
 import FirstArtistSelectionPage from "./components/FirstArtistSelectionPage";
+import { Routes, Route } from "react-router-dom";
 
 const CLIENT_ID = "870853fc8bf84c4cadb2b73729986e0c";
 const CLIENT_SECRET = "2290f350d4274d05b739e1463f6c5f37";
@@ -114,9 +115,63 @@ function App() {
     console.log("Winner!");
   }
 
+  console.log(startArtist);
   return (
     <div className="app">
-      {showLander ? (
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <LanderPage
+              showLander={showLander}
+              setShowLander={setShowLander}
+              LanderStatus={LanderStatus}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/search"
+          element={
+            <div>
+              <Header
+                setSearchInput={setSearchInput}
+                setSecondSearchInput={setSecondSearchInput}
+                search={search}
+                secondSearch={secondSearch}
+                setCount={setCount}
+                count={count}
+                startArtist={startArtist}
+                secondArtist={secondArtist}
+                getRelated={getRelated}
+                artist={artist}
+                showLander={showLander}
+                setShowLander={setShowLander}
+                LanderStatus={LanderStatus}
+              />
+              <FirstArtistSelectionPage
+                startArtistSelect={startArtistSelect}
+                setStartArtistSelect={setStartArtistSelect}
+                startArtist={startArtist}
+                setArtist={setArtist}
+                setStartArtist={setStartArtist}
+                increment={increment}
+              />
+              {/* <RelatedArtistsPage
+            related={related}
+            setRelated={setRelated}
+            artist={artist}
+            setArtist={setArtist}
+            increment={increment}
+            count={count}
+          /> */}
+            </div>
+          }
+        />
+      </Routes>
+
+      {/* {showLander ? (
         <LanderPage
           showLander={showLander}
           setShowLander={setShowLander}
@@ -156,7 +211,7 @@ function App() {
             count={count}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }

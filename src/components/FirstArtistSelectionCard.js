@@ -14,6 +14,7 @@ function FirstArtistSelectionCard({
     setStartArtist(val);
     setArtist(val);
     increment();
+    console.log(image);
   }
 
   const invalidImage =

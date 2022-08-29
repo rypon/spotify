@@ -35,7 +35,8 @@ function SearchFirstArtist({ setSearchInput, search, startArtist }) {
             <img
               alt="example"
               src={
-                startArtist?.name === undefined
+                startArtist?.images === undefined ||
+                startArtist?.images.length === 0
                   ? invalidImage
                   : startArtist?.images[0].url
               }

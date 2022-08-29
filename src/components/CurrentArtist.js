@@ -19,7 +19,10 @@ function CurrentArtist({ artist, secondArtist }) {
         <img
           alt="example"
           src={
-            artist?.images === undefined ? invalidImage : artist?.images[0].url
+            // artist?.images === undefined ? invalidImage : artist?.images[0].url
+            artist?.images === undefined || artist?.images.length === 0
+              ? invalidImage
+              : artist?.images[0].url
           }
         />
         <p class="text-center">
