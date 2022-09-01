@@ -119,10 +119,8 @@ function App() {
     artist.id !== undefined &&
     secondArtist.id !== undefined
   ) {
-    console.log("Winner!");
   }
 
-  console.log(startArtist);
   return (
     <div className="app">
       <Routes>

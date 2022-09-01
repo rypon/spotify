@@ -1,7 +1,7 @@
 import React from "react";
 import CurrentArtist from "./CurrentArtist";
-import SearchFirstArtist from "./SearchFirstArtist";
-import SearchSecondArtist from "./SearchSecondArtist";
+import { VscDebugRestart } from "react-icons/vsc";
+
 import { Link } from "react-router-dom";
 import { Card } from "antd";
 
@@ -13,9 +13,7 @@ function Header({ artist, secondArtist, LanderStatus, startArtist, guess }) {
     <div>
       <div className="flex items-center justify-center">
         <Link to="/" style={{ display: "contents" }}>
-          <button className="button" onClick={() => LanderStatus()}>
-            Home
-          </button>
+          <VscDebugRestart className="button" onClick={() => LanderStatus()} />
         </Link>
       </div>
       <div class="grid sm:grid-cols-3 justify-center">

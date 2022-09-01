@@ -2,6 +2,9 @@ import React from "react";
 import "../App.css";
 import { Input, Space, Card } from "antd";
 import { Link } from "react-router-dom";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { AiFillHome } from "react-icons/ai";
+
 const { Search } = Input;
 const { Meta } = Card;
 
@@ -16,9 +19,7 @@ function SearchSecondArtist({
 
   return (
     <div>
-      <p className="title w-fit mx-auto mt-5 mb-5">
-        Search for an ending artist
-      </p>
+      <p className="title w-fit mx-auto mt-5 mb-5">Ending Point</p>
       <div class="w-fit mx-auto">
         <Space direction="vertical">
           <Search
@@ -63,14 +64,15 @@ function SearchSecondArtist({
               : secondArtist?.genres.join(", ")}
           </p>
         </Card>
-        <div className="grid grid-cols-2 gap-4 justify-items-center">
+        <div className="grid grid-cols-3 gap-4 justify-items-center">
+          <Link to="/first-search" style={{ display: "contents" }}>
+            <BsArrowLeft className="button" />
+          </Link>
           <Link to="/" style={{ display: "contents" }}>
-            <button className="button" onClick={() => LanderStatus()}>
-              Home
-            </button>
+            <AiFillHome className="button" onClick={() => LanderStatus()} />
           </Link>
           <Link to="/play" style={{ display: "contents" }}>
-            <button className="button">Begin</button>
+            <BsArrowRight className="button" />
           </Link>
         </div>
       </div>
