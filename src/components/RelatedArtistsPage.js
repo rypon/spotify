@@ -9,6 +9,8 @@ function RelatedArtistsPage({
   setArtist,
   increment,
   count,
+  setGuess,
+  guess,
 }) {
   const relatedObj = related?.map((val) => (
     <RelatedArtistsCard
@@ -21,6 +23,8 @@ function RelatedArtistsPage({
       setArtist={setArtist}
       increment={increment}
       count={count}
+      setGuess={setGuess}
+      guess={guess}
     />
   ));
 

@@ -24,6 +24,7 @@ function App() {
   const [artist, setArtist] = useState([]);
   const [related, setRelated] = useState([]);
   const [showLander, setShowLander] = useState(true);
+  const [guess, setGuess] = useState(0);
 
   useEffect(() => {
     //API access token
@@ -110,6 +111,7 @@ function App() {
     setSecondArtist([]);
     setStartArtistSelect([]);
     setSecondArtistSelect([]);
+    setGuess(0);
   }
 
   if (
@@ -200,6 +202,7 @@ function App() {
                 showLander={showLander}
                 setShowLander={setShowLander}
                 LanderStatus={LanderStatus}
+                guess={guess}
               />
               <RelatedArtistsPage
                 related={related}
@@ -208,6 +211,8 @@ function App() {
                 setArtist={setArtist}
                 increment={increment}
                 count={count}
+                setGuess={setGuess}
+                guess={guess}
               />
             </div>
           }

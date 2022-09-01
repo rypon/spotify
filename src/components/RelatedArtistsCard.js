@@ -2,10 +2,19 @@ import React from "react";
 import "../App.css";
 import { Card } from "antd";
 
-function RelatedArtistsCard({ val, name, image, setArtist, increment }) {
+function RelatedArtistsCard({
+  val,
+  name,
+  image,
+  setArtist,
+  increment,
+  setGuess,
+  guess,
+}) {
   function clicked() {
     setArtist(val);
     increment();
+    setGuess(guess + 1);
   }
   // console.log(image);
 
