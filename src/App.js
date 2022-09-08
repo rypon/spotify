@@ -8,6 +8,7 @@ import LanderPage from "./components/LanderPage";
 import FirstArtistSelectionPage from "./components/FirstArtistSelectionPage";
 import SecondArtistSelectionPage from "./components/SecondArtistSelectionPage";
 import { Routes, Route } from "react-router-dom";
+import Winner from "./components/Winner";
 
 const CLIENT_ID = "870853fc8bf84c4cadb2b73729986e0c";
 const CLIENT_SECRET = "2290f350d4274d05b739e1463f6c5f37";
@@ -114,12 +115,12 @@ function App() {
     setGuess(0);
   }
 
-  if (
-    artist.id === secondArtist.id &&
-    artist.id !== undefined &&
-    secondArtist.id !== undefined
-  ) {
-  }
+  // if (
+  //   artist.id === secondArtist.id &&
+  //   artist.id !== undefined &&
+  //   secondArtist.id !== undefined
+  // ) {
+  // }
 
   return (
     <div className="app">
@@ -202,16 +203,25 @@ function App() {
                 LanderStatus={LanderStatus}
                 guess={guess}
               />
-              <RelatedArtistsPage
-                related={related}
-                setRelated={setRelated}
-                artist={artist}
-                setArtist={setArtist}
-                increment={increment}
-                count={count}
-                setGuess={setGuess}
-                guess={guess}
-              />
+              {artist?.name === undefined || artist?.id !== secondArtist.id ? (
+                <RelatedArtistsPage
+                  related={related}
+                  setRelated={setRelated}
+                  artist={artist}
+                  setArtist={setArtist}
+                  increment={increment}
+                  count={count}
+                  setGuess={setGuess}
+                  guess={guess}
+                />
+              ) : (
+                <Winner
+                  startArtist={startArtist}
+                  secondArtist={secondArtist}
+                  guess={guess}
+                  LanderStatus={LanderStatus}
+                />
+              )}
             </div>
           }
         />

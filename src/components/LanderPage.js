@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 
-function LanderPage({ setShowLander, showLander, LanderStatus }) {
+function LanderPage({ LanderStatus }) {
   return (
     <div className="flex items-center justify-center h-screen ">
       <div className="grid justify-items-center">

@@ -30,7 +30,7 @@ function RelatedArtistsPage({
 
   return (
     <div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
-      <div class="grid xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-4 ">
+      <div class="grid xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-10 ">
         {relatedObj}
       </div>
     </div>

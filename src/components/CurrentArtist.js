@@ -25,12 +25,12 @@ function CurrentArtist({ artist, secondArtist, guess }) {
               : artist?.images[0].url
           }
         />
-        <p class="text-center mt-1 mb-1">Number of moves: {guess}</p>
-        <p class="text-center">
+        {/* <p class="text-center mt-1 mb-1">Number of moves: {guess}</p> */}
+        {/* <p class="text-center">
           {artist?.name === undefined || artist?.id !== secondArtist.id
             ? ""
             : "Winner!"}
-        </p>
+        </p> */}
       </Card>
     </div>
   );
